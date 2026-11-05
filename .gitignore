@@ -1,0 +1,37 @@
+# 构建产物（Android）
+MahjongScore/build/
+MahjongScore/app/build/
+MahjongScore/.gradle/
+MahjongScore/.kotlin/
+MahjongScore/local.properties
+*.log
+*.apk
+*.aab
+
+# 签名文件（绝不入库）
+*.keystore
+*.jks
+
+# 服务端编译产物
+mjserver/dist/
+mjserver/mjserver-linux-amd64
+mjserver/mjserver-test.exe
+mjserver/*.exe
+
+# 运维与账号信息（含面板地址/口令，禁止公开）
+阿里云实例.txt
+mjserver/部署清单.md
+
+# 过程稿与截图
+web-*.png
+二维码-*.png
+mahjong-icon/_build/
+大厅头图/
+界面重设计-4版/
+
+# 系统垃圾
+.DS_Store
+Thumbs.db
+
+# 内部工作记录
+.workbuddy/

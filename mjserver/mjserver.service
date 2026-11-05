@@ -1,0 +1,16 @@
+[Unit]
+Description=Mahjong Score Relay Server (mjserver v0.1.0)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mjserver
+Environment=MJ_PORT=9000
+Environment=MJ_DATA=/opt/mjserver/mjserver.json
+ExecStart=/opt/mjserver/mjserver-linux-amd64
+Restart=always
+RestartSec=3
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

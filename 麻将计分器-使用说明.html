@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麻将计分器 · 使用说明</title>
+<style>
+  :root{
+    --paper:#FFF7EC; --ink:#191322; --ink2:#5A5269;
+    --p1:#FFD23F; --p2:#3D7BFF; --p3:#FF3D7F; --p4:#00C9A7; --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Microsoft YaHei","PingFang SC",sans-serif;
+    line-height:1.75; padding:28px 14px 60px;
+  }
+  .page{max-width:820px;margin:0 auto;}
+  /* 贴纸卡片 */
+  .card{
+    background:var(--white); border:3px solid var(--ink); border-radius:18px;
+    box-shadow:6px 6px 0 var(--ink); padding:22px 24px; margin-bottom:22px;
+  }
+  .card.lemon{background:var(--p1);}
+  .card.blue{background:#E8F0FF;}
+  .card.pink{background:#FFEBF3;}
+  .card.mint{background:#E4FBF5;}
+  h1{font-size:30px;letter-spacing:1px;}
+  h2{font-size:19px;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+  h2 .dot{display:inline-block;width:14px;height:14px;border:2.5px solid var(--ink);border-radius:4px;background:var(--p1);flex:none;}
+  .blue h2 .dot{background:var(--p2);} .pink h2 .dot{background:var(--p3);} .mint h2 .dot{background:var(--p4);} .lemon h2 .dot{background:var(--ink);}
+  .tag{display:inline-block;background:var(--ink);color:#fff;font-size:12px;font-weight:bold;
+    padding:2px 10px;border-radius:999px;vertical-align:middle;}
+  .sub{color:var(--ink2);font-size:13.5px;}
+  ol.steps{padding-left:0;list-style:none;counter-reset:s;}
+  ol.steps li{counter-increment:s;position:relative;padding-left:34px;margin-bottom:10px;font-size:14.5px;}
+  ol.steps li::before{
+    content:counter(s);position:absolute;left:0;top:3px;width:22px;height:22px;
+    background:var(--ink);color:#fff;border-radius:7px;font-size:13px;font-weight:bold;
+    display:flex;align-items:center;justify-content:center;
+  }
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px;}
+  th{background:var(--paper);border-bottom:2.5px solid var(--ink);padding:7px 10px;text-align:left;font-size:13.5px;}
+  td{border-bottom:1.5px solid #EADFD2;padding:7px 10px;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .num{font-family:Consolas,monospace;font-weight:bold;}
+  .warn{background:#FFF3D6;border:2.5px solid var(--ink);border-radius:12px;padding:10px 14px;font-size:13.5px;margin-top:12px;}
+  .warn b{color:#C4262E;}
+  .qr{float:right;width:170px;height:170px;border:3px solid var(--ink);border-radius:12px;margin:0 0 8px 18px;}
+  .addr{font-family:Consolas,monospace;background:var(--paper);border:2px solid var(--ink);
+    border-radius:9px;padding:5px 12px;font-size:14px;display:inline-block;margin:4px 0;}
+  .clear{clear:both;}
+  .foot{text-align:center;color:var(--ink2);font-size:12.5px;margin-top:8px;}
+  b.k{color:var(--ink);}
+  .red{color:#E0336B;font-weight:bold;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .card{box-shadow:none;page-break-inside:avoid;}
+  }
+  @media (max-width:600px){
+    h1{font-size:24px;} .card{padding:16px;} .qr{width:132px;height:132px;}
+    body{padding:14px 8px 40px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="card lemon">
+    <h1>🀄 麻将计分器 · 使用说明 <span class="tag">安卓版 v1.0.0</span></h1>
+    <p class="sub" style="margin-top:6px">打麻将不用记纸、不用算账——谁胡谁点一下，全桌分数实时同步，散场自动出总账。</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot"></span>一、安装（扫码即装）</h2>
+    <img class="qr" src="二维码-安装-纯码.png" alt="安装二维码">
+    <ol class="steps">
+      <li>用手机<b>浏览器</b>扫右侧二维码（微信扫码请点右上角「在浏览器打开」）；或直接在浏览器输入：</li>
+    </ol>
+    <p><span class="addr">182.92.191.33:9100/app/latest.apk</span></p>
+    <ol class="steps" start="2">
+      <li>下载完成后点开安装包，系统若提示「禁止安装未知应用」，选<b>允许此来源安装</b>即可；</li>
+      <li>装好后打开 App，在「我的身份」里填好<b>昵称</b>（8 字以内），就能开局了。</li>
+    </ol>
+    <div class="warn">⚠ <b>升级</b>：新版本发布后，App 会在每天第一次打开时自动提示，也可以到「设置 → 检查更新」手动升级。<b>覆盖安装不会丢历史战绩</b>，放心升。</div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="card blue">
+    <h2><span class="dot"></span>二、快速上手（三步开局）</h2>
+    <ol class="steps">
+      <li><b class="k">房主</b>：大厅点「创建房间 · 随机新号」，得到一个房号（以屏幕显示为准）；</li>
+      <li><b class="k">牌友</b>：在「加入朋友的房」输入房号进入，最多 4 人同桌；</li>
+      <li>人到齐后点「<b class="k">吊风</b>」，随机分东南西北风位，就可以开打了。</li>
+    </ol>
+    <p class="sub" style="margin-top:8px">小技巧：大厅点「邀请好友」可复制邀请文案（含房号和下载地址），直接发给牌友。</p>
+  </div>
+
+  <div class="card pink">
+    <h2><span class="dot"></span>三、怎么记分（重点）</h2>
+    <table>
+      <tr><th style="width:34%">场景</th><th>操作</th></tr>
+      <tr><td><b>自己胡了</b>（自摸 / 平胡等）</td><td>点<b>自己</b>的名牌 → 选胡型 → 确认记分</td></tr>
+      <tr><td><b>别人点炮</b></td><td>由<b>点炮的人自己</b>点对方胡牌人的名牌 → 只有「点炮」一项 → 确认</td></tr>
+    </table>
+    <table style="margin-top:14px">
+      <tr><th>胡型</th><th style="width:130px">默认分值（每家付）</th><th>付款方式</th></tr>
+      <tr><td>点炮</td><td class="num">20</td><td>点炮者<b>一人单付</b></td></tr>
+      <tr><td>平胡</td><td class="num">5</td><td>其余<b>三家各付</b></td></tr>
+      <tr><td>自摸</td><td class="num">10</td><td>其余三家各付</td></tr>
+      <tr><td>搂宝</td><td class="num">20</td><td>其余三家各付</td></tr>
+      <tr><td>宝中宝</td><td class="num">40</td><td>其余三家各付</td></tr>
+    </table>
+    <p class="sub" style="margin-top:10px">· 点别人名牌只能记「点炮」，防止多个输家重复记账；<br>· 记错不慌：流水里最新一局旁有「撤销」按钮（仅房主可撤）。<br>· <b class="red">分值可以改</b>：房主在对局页点「规则」（或设置 → 计分规则），五种胡型各填 1~999，保存后全桌立即生效。</p>
+  </div>
+
+  <div class="card mint">
+    <h2><span class="dot"></span>四、中途离场与收尾</h2>
+    <ol class="steps">
+      <li><b class="k">临时离开</b>：点「离房」或返回键退出，<b>牌局继续，分数不丢</b>；大厅会出现「对局进行中」卡片，点它直接回到牌桌；</li>
+      <li><b class="k">换人顶替</b>：新牌友用房号进来会自动坐到空位，并<b>继承该座位的风位</b>，桌子始终保持东南西北齐全；</li>
+      <li><b class="k">回房有效</b>：自建房起 <b>24 小时内</b>，大厅「回到上次的房间」卡片可一键回归；</li>
+      <li><b class="k">散场</b>：房主点「结束」，全场总分定格；流水进「历史对局」，人场均分进「战绩统计」。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot"></span>五、常见问题</h2>
+    <table>
+      <tr><th style="width:38%">问题</th><th>解决办法</th></tr>
+      <tr><td>微信扫码提示「无法下载」</td><td>点右上角「···」→「在浏览器打开」，用系统浏览器下载</td></tr>
+      <tr><td>安装被手机拦截</td><td>在弹窗里选择「允许此来源安装」后再装</td></tr>
+      <tr><td>牌友看不到我的记分</td><td>确认双方网络正常、在同一房间；退出重进会自动同步</td></tr>
+      <tr><td>分数记错了</td><td>流水最新一局旁「撤销」（仅房主可撤）；已撤销的局所有人同步回退</td></tr>
+      <tr><td>换了手机，历史没了</td><td>历史战绩存在<b>本机</b>，不随账号迁移；换机前旧手机数据无法带走</td></tr>
+      <tr><td>找不回上次的房间</td><td>超过 24 小时卡片会消失，重新建房即可</td></tr>
+    </table>
+  </div>
+
+  <div class="card lemon" style="padding:14px 24px">
+    <p style="font-size:13.5px"><b>本工具为牌友间纯积分记账工具，不涉及任何真实货币与赌博行为。</b><br>
+    <span class="sub">下载地址：182.92.191.33:9100/app/latest.apk ｜ 服务由房主提供 ｜ 问题反馈请联系维护者洲哥</span></p>
+  </div>
+
+  <p class="foot">麻将计分器 v1.0.0 · 使用说明 · 2026-11-05</p>
+</div>
+</body>
+</html>
